@@ -170,7 +170,7 @@ def dedupe(items):
             seen.add(item)  #И добавляем его в seen
 
 a = [1, 5, 2, 1, 9, 1, 5, 10]
-res = list(dedupe(a))   #оборачиваем результат в List
+res = list(dedupe(a))   #Оборачиваем результат в List
 print(res)
 
 print('----------ЗАДАЧА 11 присваивание имен срезам slice(), indices()----------')
@@ -252,9 +252,8 @@ rows_by_lfname = sorted(rows, key=itemgetter('lname', 'fname')) #Сортиро�
 print(rows_by_lfname)
 print("itemgetter() может быть заменен: lambda x: x['fname']")
 print(max(rows, key=itemgetter('uid'))) #Получаем максимальное значение по ключу
-print("Атрибут itemgetter('в кавычках')")
 
-print('----------ЗАДАЧА 14 сортировКа объеКтов, не поддерживающих сравнение lambda, attrgetter()----------')
+print('----------ЗАДАЧА 14 сортировка объектов, не поддерживающих сравнение lambda, attrgetter()----------')
 class User:
     def __init__(self, user_id):
         self.user_id = user_id
@@ -304,7 +303,6 @@ for row in rows:
 for i in rows_by_date['07/01/2012']:
     print(i)
 
-
 print('----------ЗАДАЧА 16 фильтрование listcomp, gencomp, compress----------')
 '''
 Задача
@@ -324,7 +322,7 @@ for element in pos:
 clip_neg = [i if i > 0 else 0 for i in mylist]  #listcomp с условие
 print(clip_neg)
 
-print('Применение результато фильтрования compress')
+print('Применение результатов фильтрования compress')
 from itertools import compress
 addresses = [
         '5412 N CLARK',
@@ -339,13 +337,15 @@ addresses = [
 counts = [ 0, 3, 10, 4, 1, 7, 6, 1]
 more5 = [i > 5 for i in counts] #Фильтруем последовательность - создаем последовательнотсь булевых значений
 print(more5)
-print(list(compress(addresses, more5)))
+print(list(compress(addresses, more5)))     #Совмещаем две последовательности
 
 print('----------ЗАДАЧА 17 извлечение подмножества из словаря, dictcomp----------')
 '''
 Задача
 Вы хотите создать словарь, который будет подмножеством другого словаря.
+Создать отфильтрованный словарь на основе другого.
 '''
+
 prices = {
     'ACME': 45.23,
     'AAPL': 612.78,
@@ -366,7 +366,7 @@ print('----------ЗАДАЧА 18 отображение имен на после
 Заменить доступ по позиции доступом по имени 
 '''
 from collections import namedtuple
-Subscriber = namedtuple('Subscriber', ['addr', 'joined']) #Создаем "класс" namedtupe. 'Subscriber' - имя
+Subscriber = namedtuple('Subscriber', ['addr', 'joined']) #Создаем "класс" namedtuple. 'Subscriber' - его имя
 sub = Subscriber('example@example.com', '21.03.2020')
 print(sub.addr)
 print(sub.joined)
@@ -375,7 +375,7 @@ Stock = namedtuple('Stock', ['name', 'price'])
 def cost(records):          #На вход будут подаваться записи вида [('AAPL', 500), ('FB', 450)]
     total = 0
     for rec in records:
-        s = Stock(*rec)     #Оборачиваем запись в namedtupe
+        s = Stock(*rec)     #Оборачиваем запись в namedtuple
         total += s.price
     return total
 print(cost([('AAPL', 500), ('FB', 450)]))   #950
